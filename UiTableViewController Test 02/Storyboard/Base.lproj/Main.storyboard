@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8dV-7b-jJ9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8dV-7b-jJ9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -94,7 +94,7 @@
             </objects>
             <point key="canvasLocation" x="960.79999999999995" y="59.820089955022496"/>
         </scene>
-        <!--Total Map View Controller-->
+        <!--Title-->
         <scene sceneID="iZh-Nt-2iR">
             <objects>
                 <viewController id="7Tl-bp-4Uh" customClass="TotalMapViewController" customModule="UiTableViewController_Test_02" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,6 +115,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8UH-Aw-rNU"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="wZ0-8D-Trw">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="cNH-yY-opQ">
+                            <connections>
+                                <action selector="showMeWhere:" destination="7Tl-bp-4Uh" id="9UX-5v-pQD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="totalMapView" destination="zAh-j5-v9J" id="lZK-UG-mqE"/>
                     </connections>

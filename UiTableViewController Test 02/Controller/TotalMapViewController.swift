@@ -13,6 +13,20 @@ import CoreLocation
 class TotalMapViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var totalMapView: MKMapView!
+    @IBAction func showMeWhere(_ sender: Any) {
+        
+        let latitude:CLLocationDegrees = 35.176710
+        let longitude:CLLocationDegrees = 129.076995
+        let regionDistance:CLLocationDegrees = 5000;
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span )]
+        let placemark = MKPlacemark(coordinate: coordinates)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = "My House"
+        mapItem.openInMaps(launchOptions: options)
+        
+    }
     var totalFoodStores: [FoodStore] = []
     var annotations = [MKPointAnnotation]()
     var locationManager = CLLocationManager()
