@@ -163,7 +163,7 @@ class MyTableViewController: UITableViewController, UISearchBarDelegate {
         if isSearching{
             
             text = filteredData[indexPath.row]
-            
+        
         }
         
         
