@@ -11,6 +11,8 @@ import MapKit
 
 class MapViewController: UIViewController {
 
+    
+    
     @IBOutlet weak var storeMapView: MKMapView!
     var location = ""
     var name = ""

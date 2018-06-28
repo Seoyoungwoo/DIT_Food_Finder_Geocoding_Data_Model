@@ -8,17 +8,28 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class TotalMapViewController: UIViewController {
+class TotalMapViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var totalMapView: MKMapView!
     var totalFoodStores: [FoodStore] = []
     var annotations = [MKPointAnnotation]()
+    var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewMap(items: totalFoodStores)
+//        let initialLocation = CLLocation(latitude: 35.168038, longitude: 129.071720)
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        locationManager.requestAlwaysAuthorization()
+        
+        totalMapView.showsUserLocation = true
     }
+ 
     
     func  viewMap(items: [FoodStore]) {
         for item in items {
@@ -53,6 +64,26 @@ class TotalMapViewController: UIViewController {
                 self.totalMapView.showAnnotations(self.annotations, animated: true)
             })
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation: CLLocation = locations[0]
+        print(userLocation)
+        
+      let center = CLLocationCoordinate2D(latitude:35.168459, longitude: 129.07091360)
+//        let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
+        
+        totalMapView.setRegion(region, animated: true)
+        
+        ////
+        let annotation = MKPointAnnotation()
+                annotation.coordinate = center
+                annotation.title = "나의 현재위치"
+                annotation.subtitle = "현재 위치"
+        
+        totalMapView.addAnnotation(annotation)
+        totalMapView.selectAnnotation(annotation, animated: true)
     }
     
     /*
